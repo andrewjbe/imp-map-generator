@@ -1,0 +1,26 @@
+{
+    "id": "CCAC1CAC",
+    "path": "~/Documents/GitHub/imp-map-generator/app.R",
+    "project_path": "app.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1641765428287.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "252,94",
+        "scrollLine": "229"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1641773680,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1641773680416,
+    "read_only": false,
+    "read_only_alternatives": []
+}

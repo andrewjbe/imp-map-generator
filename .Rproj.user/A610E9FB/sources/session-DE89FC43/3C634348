@@ -1,0 +1,26 @@
+{
+    "id": "3C634348",
+    "path": "~/Documents/GitHub/imp-map-generator/map-image-generator-scripts/pp-map-generator.R",
+    "project_path": "map-image-generator-scripts/pp-map-generator.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1663524505788.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "10,7",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1664853828,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1664853828935,
+    "read_only": false,
+    "read_only_alternatives": []
+}

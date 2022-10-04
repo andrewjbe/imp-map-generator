@@ -1,0 +1,14 @@
+name: imp-map-generator
+title: imp-map-generator
+username:
+account: werdna63
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5413826
+bundleId: 6357779
+url: https://werdna63.shinyapps.io/imp-map-generator/
+when: 1664584199.52854
+lastSyncTime: 1664584199.52857
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: www/turf.png
