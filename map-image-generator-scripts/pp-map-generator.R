@@ -8,7 +8,7 @@ library(tictoc)
 library(fontawesome)
 
 yr <- year(today())
-wk <- 5
+wk <- 11
 
 wk_actual <- wk + 1 # week 0 is in as week 1 for some reason
 
@@ -96,10 +96,10 @@ closest_list <- closest_list |>
 
 dark_logo_list <- c("Oregon", "Nevada", "UCLA", "Kansas State", "Air Force", "Washington State", "California",
                     "Indiana", "Michigan State", "Rice", "Texas", "Clemson", "Duke", "Pittsburgh", "Alabama",
-                    "BYU")
-alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", "TCU", 
-                    "Cincinnati", "Northwestern", "Utah State", "UC Davis", "Montana", "Wisconsin", "NC State",
-                    "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston")
+                    "BYU", "TCU")
+alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", 
+                    "Northwestern", "Utah State", "UC Davis", "Montana", "Wisconsin", "NC State",
+                    "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston", "UCLA", "USC")
 
 counties <- left_join(counties, closest_list, by = "n") |>
   left_join(ds_teams, by = "school") |>
@@ -120,7 +120,7 @@ counties_grouped_ <- counties |>
   st_cast("MULTIPOLYGON") 
 
 
-remove_logos_list <- c("Mississippi State")
+# remove_logos_list <- c("", "USC")
 
 counties_grouped <- counties_grouped_ |>
   left_join(select(ds_teams, school, mascot, abbreviation, conference, division,
@@ -133,6 +133,19 @@ counties_grouped <- counties_grouped_ |>
   # hand remove pngs from the map
   mutate(
     logo_chosen = ifelse(school %in% remove_logos_list, "https://i.stack.imgur.com/Vkq2a.png", logo_chosen)
+  )
+
+# manual color / logo changes UGHGHHGHGHG
+counties_grouped <- counties_grouped |>
+  mutate(
+    color_chosen = case_when(
+      school == "Cincinnati" ~ "#E00122",
+      TRUE ~ color_chosen
+    ),
+    logo_chosen = case_when(
+      school == "TCU" ~ "https://cdn.freebiesupply.com/logos/thumbs/2x/tcu-5-logo.png",
+      TRUE ~ logo_chosen
+    )
   )
 
 # This is the actual map -------------------------------------------------------
@@ -169,7 +182,7 @@ m <- leaflet(options = leafletOptions(crs = epsg2163),
               weight = 0,
               stroke = F
   ) |>
-  addMarkers(data = st_centroid(counties_grouped), label = ~school, icon = logoIcons,
+  addMarkers(data = st_centroid(counties_grouped, of_largest_polygon = T), label = ~school, icon = logoIcons,
              popup = paste0(
                "<center><b>", counties_grouped$city, " Territory, home of the ", counties_grouped$mascot, "</b><br></center>",
                "<center>Currently Controlled by ", counties_grouped$school, "<br></center>",

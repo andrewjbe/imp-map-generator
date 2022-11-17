@@ -10,15 +10,14 @@ library(tigris)
 library(sf)
 
 yr <- year(today())
-wk <- 5
+wk <- 11
 
 dark_logo_list <- c("Oregon", "Nevada", "UCLA", "Kansas State", "Air Force", "Washington State", "California",
                     "Indiana", "Michigan State", "Rice", "Texas", "Clemson", "Duke", "Pittsburgh", "Alabama",
-                    "BYU")
-alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", "TCU", 
-                    "Cincinnati", "Northwestern", "Utah State", "UC Davis", "Montana", "Wisconsin", "NC State",
-                    "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston", "UCLA", 
-                    "USC")
+                    "BYU", "TCU")
+alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", 
+                    "Northwestern", "Utah State", "UC Davis", "Montana", "Wisconsin", "NC State",
+                    "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston", "UCLA", "USC")
 
 # DATA --------------------------------------------------
 source('keys.R')
@@ -131,6 +130,18 @@ counties_grouped <- counties_grouped_ |>
 
 toc()
 
+# manual color / logo changes UGHGHHGHGHG
+counties_grouped <- counties_grouped |>
+  mutate(
+    color_chosen = case_when(
+      school == "Cincinnati" ~ "#E00122",
+      TRUE ~ color_chosen
+    ),
+    logo_chosen = case_when(
+      school == "TCU" ~ "https://cdn.freebiesupply.com/logos/thumbs/2x/tcu-5-logo.png",
+      TRUE ~ logo_chosen
+    )
+  )
 
 # This is the actual map -------------------------------------------------------
 logoIcons.os <- icons(

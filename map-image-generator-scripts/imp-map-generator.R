@@ -8,7 +8,7 @@ library(tictoc)
 library(extrafont)
 
 yr <- 2022
-wk <- 5
+wk <- 11
 
 # DATA --------------------------------------------------
 source('keys.R')
@@ -28,10 +28,10 @@ base_map_ <- readRDS("./data/base-map-shifted-illinois-contig.RDS")
 
 dark_logo_list <- c("Oregon", "Nevada", "UCLA", "Kansas State", "Air Force", "Washington State", "California",
                     "Indiana", "Michigan State", "Rice", "Texas", "Clemson", "Duke", "Pittsburgh", "Alabama",
-                    "BYU")
-alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", "TCU", 
-                    "Cincinnati", "Northwestern", "Utah State", "UC Davis", "Montana", "Wisconsin", "NC State",
-                    "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston", "UCLA")
+                    "BYU", "TCU")
+alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", 
+                    "Northwestern", "Utah State", "UC Davis", "Montana", "Wisconsin", "NC State",
+                    "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston", "UCLA", "USC")
 
 # team information dataframe, sans FCS teams
 ds_teams_ <- cfbfastR::cfbd_team_info(only_fbs = F)
@@ -106,6 +106,19 @@ for(i in (1:nrow(ds_results))){
 
 counties_grouped <- counties_grouped |>
   left_join(ds_teams |> select(school, logo_chosen, color_chosen), by = "school")
+
+# manual color / logo changes UGHGHHGHGHG
+counties_grouped <- counties_grouped |>
+  mutate(
+    color_chosen = case_when(
+      school == "Cincinnati" ~ "#E00122",
+      TRUE ~ color_chosen
+    ),
+    logo_chosen = case_when(
+      school == "TCU" ~ "https://cdn.freebiesupply.com/logos/thumbs/2x/tcu-5-logo.png",
+      TRUE ~ logo_chosen
+    )
+  )
 
 # # Experiment ----
 # library(mapview)
@@ -219,6 +232,7 @@ final_img <- ggplot(data = text_to_plot) +
             family = "Open Sans Extrabold",
             fontface = "bold") +
   geom_image(aes(image = "www/cfb-imp-map-logo-named.png", x = 0.09, y = 0.87), size = 0.085, asp = 1.6) +
+  geom_image(aes(image = "www/ireeland.png", x = 0.90, y = 0.3), size = 0.07, asp = 1.6) +
   xlim(0,1) +
   ylim(0,1) +
   ggthemes::theme_map() 

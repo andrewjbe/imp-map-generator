@@ -39,11 +39,12 @@ states <- readRDS("./data/states-shifted-simple.RDS")
 # base_map <- readRDS("base-map-shifted-block-groups.RDS")
 base_map_ <- readRDS("./data/base-map-shifted-illinois-contig.RDS")
 
-dark_logo_list <- c("Oregon", "USC", "Nevada", "UCLA", "Kansas State", "Air Force", "Washington State",
-                    "Indiana", "Michigan State", "Rice", "Texas", "TCU", "Clemson", "Duke", "Pittsburgh", "Alabama")
-alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", "California",
-                    "Cincinnati", "Northwestern", "Utah State", "UC Davis", "Montana", "USC", "Wisconsin", "NC State",
-                    "BYU", "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston")
+dark_logo_list <- c("Oregon", "Nevada", "UCLA", "Kansas State", "Air Force", "Washington State", "California",
+                    "Indiana", "Michigan State", "Rice", "Texas", "Clemson", "Duke", "Pittsburgh", "Alabama",
+                    "BYU")
+alt_color_list <- c("Tennessee", "North Texas", "Temple", "LSU", "San Diego State", "UMass", "Iowa", "TCU", 
+                    "Cincinnati", "Northwestern", "Utah State", "UC Davis", "Montana", "Wisconsin", "NC State",
+                    "Oklahoma", "Minnesota", "Kent State", "SMU", "Akron", "Tulsa", "Houston", "UCLA", "USC")
 
 # # team information dataframe, includes FCS teams
 # ds_teams_ <- cfbfastR::cfbd_team_info(only_fbs = FALSE)
