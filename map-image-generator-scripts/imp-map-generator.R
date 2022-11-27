@@ -8,7 +8,7 @@ library(tictoc)
 library(extrafont)
 
 yr <- 2022
-wk <- 11
+wk <- 12
 
 # DATA --------------------------------------------------
 source('keys.R')

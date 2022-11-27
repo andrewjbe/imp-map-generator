@@ -7,8 +7,8 @@ library(data.table)
 library(tictoc)
 library(fontawesome)
 
-yr <- year(today())
-wk <- 11
+yr <- 2022
+wk <- 12
 
 wk_actual <- wk + 1 # week 0 is in as week 1 for some reason
 

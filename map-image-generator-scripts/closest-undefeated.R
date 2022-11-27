@@ -10,7 +10,7 @@ library(tigris)
 library(sf)
 
 yr <- year(today())
-wk <- 11
+wk <- 12
 
 dark_logo_list <- c("Oregon", "Nevada", "UCLA", "Kansas State", "Air Force", "Washington State", "California",
                     "Indiana", "Michigan State", "Rice", "Texas", "Clemson", "Duke", "Pittsburgh", "Alabama",
